@@ -1,0 +1,14 @@
+---
+- name: Re-create a amongus-mute container
+  docker_container:
+    name: amongus-mute
+    image: denverquane/amongusdiscord
+    state: started
+    restart_policy: on-failure
+    recreate: yes
+    ports:
+      - "8123:8123"
+    env:
+      DISCORD_BOT_TOKEN: "{{ discord.bot_token1 }}"
+      DISCORD_BOT_TOKEN2: "{{ discord.bot_token2 }}"
+  become: yes
